@@ -24,6 +24,7 @@ const Home = () => {
         const fetchedFilms = await fetchTrendingMovies({
           abortCtrl: abortCtrl.current,
         });
+
         setFilms(fetchedFilms);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
