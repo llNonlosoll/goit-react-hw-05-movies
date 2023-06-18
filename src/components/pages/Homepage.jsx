@@ -7,7 +7,7 @@ import FilmList from 'components/FilmListComponent/FilmList';
 const Home = () => {
   const [films, setFilms] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(null);
+
   const abortCtrl = useRef();
 
   useEffect(() => {
@@ -20,15 +20,14 @@ const Home = () => {
 
       try {
         setLoading(true);
-        setErrorMsg(null);
+
         const fetchedFilms = await fetchTrendingMovies({
           abortCtrl: abortCtrl.current,
         });
         setFilms(fetchedFilms);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
-          setErrorMsg(error.message);
-          console.log(errorMsg);
+          console.log(error.message);
         }
       } finally {
         setLoading(false);
