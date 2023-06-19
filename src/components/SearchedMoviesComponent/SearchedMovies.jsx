@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
-import { List, Item, FilmLink } from './FilmList.styled';
+import { List, Item, FilmLink } from './SearchedMovies.styled';
 
-const FilmList = ({ movies }) => {
+const SearchedMovies = ({ movies }) => {
   const location = useLocation();
 
   return (
@@ -17,4 +17,4 @@ const FilmList = ({ movies }) => {
   );
 };
 
-export default FilmList;
+export default SearchedMovies;

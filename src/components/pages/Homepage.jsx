@@ -1,31 +1,21 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchTrendingMovies } from 'services/api';
 
 import { Loader } from 'components/LoaderComponent/Loader';
 import FilmList from 'components/FilmListComponent/FilmList';
 
 const Home = () => {
-  const [films, setFilms] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  const abortCtrl = useRef();
-
   useEffect(() => {
-    const fetchFilms = async () => {
-      if (abortCtrl.current) {
-        abortCtrl.current.abort();
-      }
-
-      abortCtrl.current = new AbortController();
-
+    const fetchMoviesList = async () => {
       try {
         setLoading(true);
 
-        const fetchedFilms = await fetchTrendingMovies({
-          abortCtrl: abortCtrl.current,
-        });
+        const fetchedFilms = await fetchTrendingMovies();
 
-        setFilms(fetchedFilms);
+        setMovies(fetchedFilms);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
           console.log(error.message);
@@ -35,13 +25,13 @@ const Home = () => {
       }
     };
 
-    fetchFilms();
+    fetchMoviesList();
   }, []);
 
   return (
     <main>
       <h1>TRENDING FILMS TODAY</h1>
-      <FilmList films={films} />
+      <FilmList movies={movies} />
 
       {loading && <Loader />}
     </main>
