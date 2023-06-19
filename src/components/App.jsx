@@ -2,8 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { Layout } from './LayoutComponent/Layout';
 import { lazy } from 'react';
 
-const Home = lazy(() => import('components/pages/Homepage'));
-const Movies = lazy(() => import('components/pages/Moviespage'));
+const Home = lazy(() => import('components/pages/HomePage'));
+const Movies = lazy(() => import('components/pages/MoviesPage'));
 
 export const App = () => {
   return (
