@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import { fetchTrendingMovies } from 'services/api';
 
 import { Loader } from 'components/LoaderComponent/Loader';
+
+import { fetchTrendingMovies } from 'services/api';
 import FilmList from 'components/FilmListComponent/FilmList';
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ const Home = () => {
         setMovies(fetchedFilms);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
-          console.log(error.message);
+          setError(error.message);
         }
       } finally {
         setLoading(false);
@@ -32,6 +34,8 @@ const Home = () => {
     <main>
       <h1>TRENDING FILMS TODAY</h1>
       <FilmList movies={movies} />
+
+      {error && !loading && <p>Error: {error}</p>}
 
       {loading && <Loader />}
     </main>

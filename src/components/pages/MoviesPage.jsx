@@ -8,6 +8,7 @@ import FilmList from 'components/FilmListComponent/FilmList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,7 +38,7 @@ const Movies = () => {
         setMovies(fetchedSearchedMovies);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
-          console.log(error.message);
+          setError(error.message);
         }
       } finally {
         setLoading(false);
@@ -76,11 +77,16 @@ const Movies = () => {
       </div>
 
       {loading && <Loader />}
+      {error && !loading && <p>Error: {error}</p>}
 
-      {movies.length > 0 ? (
-        <FilmList movies={movies} />
-      ) : (
-        <p>No movies with this title were found. Try entering another title</p>
+      {movies.length !== 0 && <FilmList movies={movies} />}
+
+      {!error && !searchQuery && movies.length === 0 && (
+        <p>Please enter movie title</p>
+      )}
+
+      {!error && !loading && searchQuery && movies.length === 0 && (
+        <p>No movies found with this title</p>
       )}
     </div>
   );

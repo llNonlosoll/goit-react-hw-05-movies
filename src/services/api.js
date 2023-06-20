@@ -4,7 +4,7 @@ import axios from 'axios';
 const instance = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
   params: {
-    api_key: 'ed30d82e5e7e2bb8ef0712ec8219f600',
+    api_key: 'efb2c1c3ed4f12e7da1417e145c2656a',
     language: 'en-US',
   },
 });
@@ -25,6 +25,15 @@ export async function searchMovie(queryString, signal) {
       signal,
     });
     return data.results;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getMovieById(id) {
+  try {
+    const { data } = await instance.get(`/movie/${id}`);
+    return data;
   } catch (error) {
     throw error;
   }
