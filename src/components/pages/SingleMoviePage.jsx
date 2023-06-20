@@ -33,8 +33,6 @@ const SingleMovie = () => {
     fetchMovie();
   }, [movieId]);
 
-  console.log(movie);
-
   const backButton = location.state?.from ?? '/';
 
   return (
@@ -42,7 +40,7 @@ const SingleMovie = () => {
       <Link to={backButton}>Go Back</Link>
       {loading && <Loader />}
       {error && <p>Error: {error}</p>}
-      <SingleMovieComp movie={movie}></SingleMovieComp>
+      <SingleMovieComp movie={movie} backButton={backButton} />
     </div>
   );
 };

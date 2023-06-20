@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 import { Loader } from 'components/LoaderComponent/Loader';
 import noImgAvailable from '../../images/no_image_available.jpg';
 
-const SingleMovieComp = ({ movie }) => {
+const SingleMovieComp = ({ movie, backButton }) => {
   if (!movie) {
     return;
   }
@@ -49,10 +49,14 @@ const SingleMovieComp = ({ movie }) => {
       <div>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from: backButton }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: backButton }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </div>
