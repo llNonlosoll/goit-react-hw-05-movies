@@ -4,13 +4,14 @@ import { useSearchParams } from 'react-router-dom';
 import { Loader } from 'components/LoaderComponent/Loader';
 
 import { searchMovie } from 'services/api';
-import SearchedMovies from 'components/SearchedMoviesComponent/SearchedMovies';
+import FilmList from 'components/FilmListComponent/FilmList';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
+
   const searchQuery = searchParams.get('query');
 
   const [query, setQuery] = useState(() => searchQuery || '');
@@ -77,7 +78,7 @@ const Movies = () => {
       {loading && <Loader />}
 
       {movies.length > 0 ? (
-        <SearchedMovies movies={movies} />
+        <FilmList movies={movies} />
       ) : (
         <p>No movies with this title were found. Try entering another title</p>
       )}

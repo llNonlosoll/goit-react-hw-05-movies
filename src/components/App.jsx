@@ -11,11 +11,11 @@ export const App = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
 
-        <Route path="/movies" element={<Movies />} />
+        <Route path="movies" element={<Movies />} />
 
-        <Route path="/movies/:filmId">
-          <Route path="/movies/:filmId/cast" />
-          <Route path="/movies/:filmId/reviews" />
+        <Route path="movies/:movieId">
+          <Route path="movies/:movieId/cast" />
+          <Route path="movies/:movieId/reviews" />
         </Route>
 
         <Route path="*" element={<Home />} />
