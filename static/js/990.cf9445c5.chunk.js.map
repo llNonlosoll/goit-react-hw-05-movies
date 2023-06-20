@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/990.cf9445c5.chunk.js","mappings":"0JAIA,UAJa,WACX,OAAO,uBAAG,eACX,C","sources":["components/pages/CastPage.jsx"],"sourcesContent":["const Cast = () => {\n  return <p>We are here</p>;\n};\n\nexport default Cast;\n"],"names":[],"sourceRoot":""}
