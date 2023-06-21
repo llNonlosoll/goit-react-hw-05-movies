@@ -7,21 +7,23 @@ import { searchMovie } from 'services/api';
 import FilmList from 'components/FilmListComponent/FilmList';
 
 const Movies = () => {
+  //States
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  // Параметри рядка запиту
+  // Query string parameters
   const [searchParams, setSearchParams] = useSearchParams();
 
-  // Значення 'query' з рядка запиту
+  // The value of 'query' from the query string
   const searchQuery = searchParams.get('query');
 
-  // Значення з інпуту або з рядка запиту
+  // Value from input or from searchQuery
   const [query, setQuery] = useState(() => searchQuery || '');
 
   const abortCtrl = useRef();
 
+  // fetch request on searchQuery change
   useEffect(() => {
     const fetchMovies = async () => {
       if (abortCtrl.current) {
@@ -53,19 +55,22 @@ const Movies = () => {
     }
   }, [searchQuery]);
 
+  // Function for state change when the input value changes
   const handleChange = event => {
     setQuery(event.target.value);
   };
 
+  // Function on form submit => write down the value of searchParams
+  // => then value of searchQuery
   const handleSubmit = event => {
     event.preventDefault();
     setSearchParams({ query });
   };
 
+  //Render
   return (
     <div>
       <div>
-        {' '}
         <h2>Search Movies:</h2>
         <form onSubmit={handleSubmit}>
           <input
