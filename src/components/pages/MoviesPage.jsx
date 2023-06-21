@@ -4,7 +4,8 @@ import { useSearchParams } from 'react-router-dom';
 import { Loader } from 'components/LoaderComponent/Loader';
 
 import { searchMovie } from 'services/api';
-import FilmList from 'components/FilmListComponent/FilmList';
+import MoviesPageComp from 'components/MoviesPageComponent/MoviesPageComp';
+import FoundMovies from 'components/FoundMoviesComponent/FoundMovies';
 
 const Movies = () => {
   //States
@@ -69,8 +70,13 @@ const Movies = () => {
 
   //Render
   return (
-    <div>
-      <div>
+    <>
+      <MoviesPageComp
+        handleSubmit={handleSubmit}
+        query={query}
+        handleChange={handleChange}
+      ></MoviesPageComp>
+      {/* <div>
         <h2>Search Movies:</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -82,12 +88,12 @@ const Movies = () => {
           />
           <button type="submit">Search movie</button>
         </form>
-      </div>
+      </div> */}
 
       {loading && <Loader />}
       {error && !loading && <p>Error: {error}</p>}
 
-      {movies.length !== 0 && <FilmList movies={movies} />}
+      {movies.length !== 0 && <FoundMovies movies={movies} />}
 
       {!error && !searchQuery && movies.length === 0 && (
         <p>Please enter movie title</p>
@@ -96,7 +102,7 @@ const Movies = () => {
       {!error && !loading && searchQuery && movies.length === 0 && (
         <p>No movies found with this title</p>
       )}
-    </div>
+    </>
   );
 };
 
