@@ -93,7 +93,9 @@ const Movies = () => {
       {loading && <Loader />}
       {error && !loading && <p>Error: {error}</p>}
 
-      {movies.length !== 0 && <FoundMovies movies={movies} />}
+      {movies.length !== 0 && (
+        <FoundMovies movies={movies} searchQuery={searchQuery} />
+      )}
 
       {!error && !searchQuery && movies.length === 0 && (
         <p>Please enter movie title</p>

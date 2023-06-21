@@ -1,12 +1,12 @@
 import { useLocation } from 'react-router-dom';
 import { List, Item, FilmLink, Title } from './FoundMovies.styled';
 
-const FoundMovies = ({ movies }) => {
+const FoundMovies = ({ movies, searchQuery }) => {
   const location = useLocation();
-
+  console.log(searchQuery);
   return (
     <>
-      <Title>We have found the movies for your request:</Title>
+      <Title>We have found the movies for your request: "{searchQuery}"</Title>
       <List>
         {movies.map(({ id, title }) => (
           <Item key={id}>
