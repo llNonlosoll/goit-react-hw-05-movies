@@ -1,16 +1,18 @@
+import { Title, Input, Button } from './MoviesPageComp.styled';
+
 const MoviesPageComp = ({ handleSubmit, query, handleChange }) => {
   return (
     <div>
-      <h2>Search Movies:</h2>
+      <Title>Search Movies:</Title>
       <form onSubmit={handleSubmit}>
-        <input
+        <Input
           value={query}
           onChange={handleChange}
           name="searchQuery"
           type="text"
           placeholder="Type here the movie title"
         />
-        <button type="submit">Search movie</button>
+        <Button type="submit">Search movie</Button>
       </form>
     </div>
   );

@@ -33,6 +33,8 @@ export const Link = styled(NavLink)`
   color: #111111;
   text-decoration: none;
 
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     color: #42aff3;
   }

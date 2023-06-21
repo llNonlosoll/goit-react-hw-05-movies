@@ -76,19 +76,6 @@ const Movies = () => {
         query={query}
         handleChange={handleChange}
       ></MoviesPageComp>
-      {/* <div>
-        <h2>Search Movies:</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            value={query}
-            onChange={handleChange}
-            name="searchQuery"
-            type="text"
-            placeholder="Type here the movie title"
-          />
-          <button type="submit">Search movie</button>
-        </form>
-      </div> */}
 
       {loading && <Loader />}
       {error && !loading && <p>Error: {error}</p>}
