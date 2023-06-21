@@ -6,10 +6,12 @@ import { fetchTrendingMovies } from 'services/api';
 import FilmList from 'components/FilmListComponent/FilmList';
 
 const Home = () => {
+  //States
   const [movies, setMovies] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // fetch request on first render
   useEffect(() => {
     const fetchMoviesList = async () => {
       try {
@@ -30,14 +32,14 @@ const Home = () => {
     fetchMoviesList();
   }, []);
 
+  //Render
   return (
     <main>
-      <h1>TRENDING FILMS TODAY</h1>
-      <FilmList movies={movies} />
+      {loading && <Loader />}
 
       {error && !loading && <p>Error: {error}</p>}
 
-      {loading && <Loader />}
+      <FilmList movies={movies} />
     </main>
   );
 };
