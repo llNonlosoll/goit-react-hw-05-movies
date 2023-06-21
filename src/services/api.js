@@ -51,7 +51,7 @@ export async function getCast(id) {
 export async function getReviews(id) {
   try {
     const { data } = await instance.get(`/movie/${id}/reviews`);
-    return data;
+    return data.results;
   } catch (error) {
     throw error;
   }

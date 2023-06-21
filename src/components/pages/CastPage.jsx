@@ -32,10 +32,6 @@ const Cast = () => {
     fetchCast();
   }, [movieId]);
 
-  if (!movieCast) {
-    return;
-  }
-
   return (
     <div>
       {loading && <Loader />}
