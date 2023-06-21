@@ -1,6 +1,6 @@
 import noImgAvailable from '../../images/no_image_available.jpg';
 
-const CastComp = movieCast => {
+const CastComp = ({ movieCast }) => {
   if (!movieCast) {
     return;
   }

@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import { Loader } from 'components/LoaderComponent/Loader';
 import { getCast } from 'services/api';
-import noImgAvailable from '../../images/no_image_available.jpg';
-// import CastComp from 'components/CastComponent/Cast';
+import CastComp from 'components/CastComponent/Cast';
 
 const Cast = () => {
   const [movieCast, setMovieCast] = useState(null);
@@ -42,30 +41,8 @@ const Cast = () => {
       {loading && <Loader />}
 
       {error && !loading && <p>Error: {error}</p>}
-      {/* {movieCast.length > 0 && <CastComp movieCast={movieCast} />} */}
-      {/* <CastComp movieCast={movieCast} /> */}
 
-      <ul>
-        {movieCast.map(
-          ({ id, profile_path, original_name, name, character }) => (
-            <li key={id}>
-              <img
-                width="200px"
-                src={
-                  profile_path ? (
-                    `https://image.tmdb.org/t/p/w500${profile_path}`
-                  ) : (
-                    <img src={noImgAvailable} alt="not available" />
-                  )
-                }
-                alt={original_name}
-              />
-              <p>{name}</p>
-              <p>Character: {character}</p>
-            </li>
-          )
-        )}
-      </ul>
+      <CastComp movieCast={movieCast} />
     </div>
   );
 };
