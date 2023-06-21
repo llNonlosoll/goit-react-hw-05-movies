@@ -3,8 +3,9 @@ import { Link, Outlet } from 'react-router-dom';
 
 import { Loader } from 'components/LoaderComponent/Loader';
 import noImgAvailable from '../../images/no_image_available.jpg';
+import { StyledLink, Container } from './SingleMovie.styled';
 
-const SingleMovieComp = ({ movie, backButton }) => {
+const SingleMovieComp = ({ movie, goBack }) => {
   if (!movie) {
     return;
   }
@@ -21,7 +22,9 @@ const SingleMovieComp = ({ movie, backButton }) => {
 
   return (
     <>
-      <div>
+      <Container>
+        <StyledLink to={goBack}>Go Back</StyledLink>
+
         {poster_path ? (
           <img
             alt={original_title}
@@ -45,16 +48,16 @@ const SingleMovieComp = ({ movie, backButton }) => {
             ))}
           </ul>
         </div>
-      </div>
+      </Container>
       <div>
         <ul>
           <li>
-            <Link to="cast" state={{ from: backButton }}>
+            <Link to="cast" state={{ from: goBack }}>
               Cast
             </Link>
           </li>
           <li>
-            <Link to="reviews" state={{ from: backButton }}>
+            <Link to="reviews" state={{ from: goBack }}>
               Reviews
             </Link>
           </li>

@@ -33,13 +33,13 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <>
       {loading && <Loader />}
 
       {error && !loading && <p>Error: {error}</p>}
 
       <ReviewsComp movieReviews={movieReviews} />
-    </div>
+    </>
   );
 };
 

@@ -33,13 +33,13 @@ const Cast = () => {
   }, [movieId]);
 
   return (
-    <div>
+    <>
       {loading && <Loader />}
 
       {error && !loading && <p>Error: {error}</p>}
 
       <CastComp movieCast={movieCast} />
-    </div>
+    </>
   );
 };
 

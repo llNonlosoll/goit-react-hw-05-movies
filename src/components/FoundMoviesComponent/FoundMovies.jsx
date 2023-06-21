@@ -3,7 +3,7 @@ import { List, Item, FilmLink, Title } from './FoundMovies.styled';
 
 const FoundMovies = ({ movies, searchQuery }) => {
   const location = useLocation();
-  console.log(searchQuery);
+
   return (
     <>
       <Title>We have found the movies for your request: "{searchQuery}"</Title>

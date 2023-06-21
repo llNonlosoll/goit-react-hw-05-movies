@@ -33,3 +33,9 @@ export const Button = styled.button`
     background-color: #ed982a;
   }
 `;
+
+export const TextMessage = styled.p`
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 26px;
+`;

@@ -6,6 +6,7 @@ import { Loader } from 'components/LoaderComponent/Loader';
 import { searchMovie } from 'services/api';
 import MoviesPageComp from 'components/MoviesPageComponent/MoviesPageComp';
 import FoundMovies from 'components/FoundMoviesComponent/FoundMovies';
+import { TextMessage } from 'components/MoviesPageComponent/MoviesPageComp.styled';
 
 const Movies = () => {
   //States
@@ -65,6 +66,10 @@ const Movies = () => {
   // => then value of searchQuery
   const handleSubmit = event => {
     event.preventDefault();
+    if (query === '') {
+      alert('Please enter some title to search ');
+      return;
+    }
     setSearchParams({ query });
   };
 
@@ -78,18 +83,18 @@ const Movies = () => {
       ></MoviesPageComp>
 
       {loading && <Loader />}
-      {error && !loading && <p>Error: {error}</p>}
+      {error && !loading && <TextMessage>Error: {error}</TextMessage>}
 
       {movies.length !== 0 && (
         <FoundMovies movies={movies} searchQuery={searchQuery} />
       )}
 
       {!error && !searchQuery && movies.length === 0 && (
-        <p>Please enter movie title</p>
+        <TextMessage>Please enter movie title</TextMessage>
       )}
 
       {!error && !loading && searchQuery && movies.length === 0 && (
-        <p>No movies found with this title</p>
+        <TextMessage>No movies found with this title</TextMessage>
       )}
     </>
   );

@@ -1,19 +1,24 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useParams, Link } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 
 import { Loader } from 'components/LoaderComponent/Loader';
 import { getMovieById } from 'services/api';
 import SingleMovieComp from 'components/SinglePageComponent/SingleMovie';
 
 const SingleMovie = () => {
+  //States
   const [movie, setMovie] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const location = useLocation();
 
+  // Variable to save location.state or "/"
+  const goBack = location.state?.from ?? '/';
+
   const { movieId } = useParams();
 
+  // fetch request on movieId change
   useEffect(() => {
     const fetchMovie = async () => {
       try {
@@ -34,18 +39,15 @@ const SingleMovie = () => {
     fetchMovie();
   }, [movieId]);
 
-  const backButton = location.state?.from ?? '/';
-
+  //Render
   return (
-    <div>
-      <Link to={backButton}>Go Back</Link>
-
+    <>
       {loading && <Loader />}
 
       {error && !loading && <p>Error: {error}</p>}
 
-      <SingleMovieComp movie={movie} backButton={backButton} />
-    </div>
+      <SingleMovieComp movie={movie} goBack={goBack} />
+    </>
   );
 };
 
