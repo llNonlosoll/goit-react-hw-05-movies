@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/438.5c6d857d.chunk.js","mappings":"0JAMA,UAJgB,WACd,OAAO,uBAAG,wBACX,C","sources":["components/pages/ReviewsPage.jsx"],"sourcesContent":["// import { getReviews } from 'services/api';\n\nconst Reviews = () => {\n  return <p>We are here: reviews</p>;\n};\n\nexport default Reviews;\n"],"names":[],"sourceRoot":""}
