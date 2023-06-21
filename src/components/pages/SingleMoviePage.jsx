@@ -20,6 +20,7 @@ const SingleMovie = () => {
         setLoading(true);
 
         const fetchedMovie = await getMovieById(movieId);
+
         setMovie(fetchedMovie);
       } catch (error) {
         if (error.code !== 'ERR_CANCELED') {
@@ -38,8 +39,11 @@ const SingleMovie = () => {
   return (
     <div>
       <Link to={backButton}>Go Back</Link>
+
       {loading && <Loader />}
-      {error && <p>Error: {error}</p>}
+
+      {error && !loading && <p>Error: {error}</p>}
+
       <SingleMovieComp movie={movie} backButton={backButton} />
     </div>
   );

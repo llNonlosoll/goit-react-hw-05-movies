@@ -11,10 +11,13 @@ const Movies = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // Параметри рядка запиту
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // Значення 'query' з рядка запиту
   const searchQuery = searchParams.get('query');
 
+  // Значення з інпуту або з рядка запиту
   const [query, setQuery] = useState(() => searchQuery || '');
 
   const abortCtrl = useRef();

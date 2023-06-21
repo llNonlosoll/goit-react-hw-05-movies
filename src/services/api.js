@@ -38,3 +38,21 @@ export async function getMovieById(id) {
     throw error;
   }
 }
+
+export async function getCast(id) {
+  try {
+    const { data } = await instance.get(`/movie/${id}/credits`);
+    return data.cast;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export async function getReviews(id) {
+  try {
+    const { data } = await instance.get(`/movie/${id}/reviews`);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+}
