@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { Loader } from 'components/LoaderComponent/Loader';
 import noImgAvailable from '../../images/no_image_available.jpg';
