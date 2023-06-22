@@ -1,17 +1,19 @@
+import { ReviewsList, ReviewsItem, ReviewsText } from './Reviews.styled';
+
 const ReviewsComp = ({ movieReviews }) => {
   if (!movieReviews) {
     return;
   }
 
   return (
-    <ul>
+    <ReviewsList>
       {movieReviews.map(({ id, author, content }) => (
-        <li key={id}>
-          <h2>Author: {author}</h2>
-          <p>{content}</p>
-        </li>
+        <ReviewsItem key={id}>
+          <h4>Author: {author}</h4>
+          <ReviewsText>{content}</ReviewsText>
+        </ReviewsItem>
       ))}
-    </ul>
+    </ReviewsList>
   );
 };
 

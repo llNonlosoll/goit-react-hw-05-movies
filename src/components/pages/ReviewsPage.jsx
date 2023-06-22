@@ -6,12 +6,15 @@ import { getReviews } from 'services/api';
 import ReviewsComp from 'components/ReviewsComponent/Reviews';
 
 const Reviews = () => {
+  //States
   const [movieReviews, setMovieReviews] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // destructuring "movieId" from URL parameters
   const { movieId } = useParams();
 
+  // fetch request on movieId change
   useEffect(() => {
     const fetchReviews = async () => {
       try {
@@ -32,6 +35,7 @@ const Reviews = () => {
     fetchReviews();
   }, [movieId]);
 
+  //Render
   return (
     <>
       {loading && <Loader />}
