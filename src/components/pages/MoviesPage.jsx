@@ -23,6 +23,7 @@ const Movies = () => {
   // Value from input or from searchQuery
   const [query, setQuery] = useState(() => searchQuery || '');
 
+  // Adding an AbortController to interrupt previous request
   const abortCtrl = useRef();
 
   // fetch request on searchQuery change

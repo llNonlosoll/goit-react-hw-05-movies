@@ -1,30 +1,34 @@
 import noImgAvailable from '../../images/no_image_available.jpg';
 
+import { CastList, CastItem, ItalicText, Image } from './Cast.styled';
+
 const CastComp = ({ movieCast }) => {
   if (!movieCast) {
     return;
   }
 
   return (
-    <ul>
+    <CastList>
       {movieCast.map(({ id, profile_path, original_name, name, character }) => (
-        <li key={id}>
-          <img
+        <CastItem key={id}>
+          <Image
             width="200px"
             src={
               profile_path ? (
                 `https://image.tmdb.org/t/p/w500${profile_path}`
               ) : (
-                <img src={noImgAvailable} alt="not available" />
+                <Image src={noImgAvailable} alt="not available" />
               )
             }
             alt={original_name}
           />
-          <p>{name}</p>
-          <p>Character: {character}</p>
-        </li>
+          <div>
+            <h4>{name}</h4>
+            <ItalicText>Character: {character}</ItalicText>
+          </div>
+        </CastItem>
       ))}
-    </ul>
+    </CastList>
   );
 };
 

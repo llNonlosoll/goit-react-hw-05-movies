@@ -16,6 +16,7 @@ const SingleMovie = () => {
   // Variable to save location.state or "/"
   const goBack = location.state?.from ?? '/';
 
+  // destructuring "movieId" from URL parameters
   const { movieId } = useParams();
 
   // fetch request on movieId change

@@ -6,12 +6,15 @@ import { getCast } from 'services/api';
 import CastComp from 'components/CastComponent/Cast';
 
 const Cast = () => {
+  //States
   const [movieCast, setMovieCast] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  // destructuring "movieId" from URL parameters
   const { movieId } = useParams();
 
+  // fetch request on movieId change
   useEffect(() => {
     const fetchCast = async () => {
       try {
@@ -32,6 +35,7 @@ const Cast = () => {
     fetchCast();
   }, [movieId]);
 
+  //Render
   return (
     <>
       {loading && <Loader />}
