@@ -44,5 +44,6 @@ export const ItalicText = styled.p`
 `;
 
 export const Image = styled.img`
+  width: 200px;
   border-radius: 5px;
 `;

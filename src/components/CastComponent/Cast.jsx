@@ -11,17 +11,14 @@ const CastComp = ({ movieCast }) => {
     <CastList>
       {movieCast.map(({ id, profile_path, original_name, name, character }) => (
         <CastItem key={id}>
-          <Image
-            width="200px"
-            src={
-              profile_path ? (
-                `https://image.tmdb.org/t/p/w500${profile_path}`
-              ) : (
-                <Image src={noImgAvailable} alt="not available" />
-              )
-            }
-            alt={original_name}
-          />
+          {profile_path ? (
+            <Image
+              alt={original_name}
+              src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+            />
+          ) : (
+            <Image src={noImgAvailable} alt="not available" />
+          )}
           <div>
             <h4>{name}</h4>
             <ItalicText>Character: {character}</ItalicText>
