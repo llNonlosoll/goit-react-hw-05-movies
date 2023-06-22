@@ -3,7 +3,14 @@ import { Link, Outlet } from 'react-router-dom';
 
 import { Loader } from 'components/LoaderComponent/Loader';
 import noImgAvailable from '../../images/no_image_available.jpg';
-import { StyledLink, Container } from './SingleMovie.styled';
+import {
+  GoBackLink,
+  Container,
+  Image,
+  ItalicText,
+  LinkContainer,
+  StyledLink,
+} from './SingleMovie.styled';
 
 const SingleMovieComp = ({ movie, goBack }) => {
   if (!movie) {
@@ -22,26 +29,24 @@ const SingleMovieComp = ({ movie, goBack }) => {
 
   return (
     <>
+      <GoBackLink to={goBack}>Go Back</GoBackLink>
       <Container>
-        <StyledLink to={goBack}>Go Back</StyledLink>
-
         {poster_path ? (
-          <img
+          <Image
             alt={original_title}
             src={`https://image.tmdb.org/t/p/w500${poster_path}`}
           />
         ) : (
-          <img src={noImgAvailable} alt="not available" />
+          <Image src={noImgAvailable} alt="not available" />
         )}
 
         <div>
-          <h1>
-            {title} : {release_date}
-          </h1>
-          <p>User Score: {popularity}</p>
-          <p>Overview</p>
+          <h2>"{title}"</h2>
+          <ItalicText>Release date: {release_date}</ItalicText>
+          <ItalicText>User Score: {popularity}</ItalicText>
+          <h3>Overview</h3>
           <p>{overview}</p>
-          <p>Genres</p>
+          <h3>Genres</h3>
           <ul>
             {genres.map(genre => (
               <li key={genre.id}>{genre.name}</li>
@@ -49,20 +54,14 @@ const SingleMovieComp = ({ movie, goBack }) => {
           </ul>
         </div>
       </Container>
-      <div>
-        <ul>
-          <li>
-            <Link to="cast" state={{ from: goBack }}>
-              Cast
-            </Link>
-          </li>
-          <li>
-            <Link to="reviews" state={{ from: goBack }}>
-              Reviews
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <LinkContainer>
+        <StyledLink to="cast" state={{ from: goBack }}>
+          Cast
+        </StyledLink>
+        <StyledLink to="reviews" state={{ from: goBack }}>
+          Reviews
+        </StyledLink>
+      </LinkContainer>
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
