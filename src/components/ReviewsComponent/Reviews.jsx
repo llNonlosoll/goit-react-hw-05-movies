@@ -1,4 +1,9 @@
-import { ReviewsList, ReviewsItem, ReviewsText } from './Reviews.styled';
+import {
+  ReviewsList,
+  ReviewsItem,
+  ReviewsText,
+  ItalicText,
+} from './Reviews.styled';
 
 const ReviewsComp = ({ movieReviews }) => {
   if (!movieReviews) {
@@ -7,7 +12,9 @@ const ReviewsComp = ({ movieReviews }) => {
 
   return (
     <>
-      {movieReviews.length === 0 && <p>We have no reviews for this movie</p>}
+      {movieReviews.length === 0 && (
+        <ItalicText>We have no reviews for this movie</ItalicText>
+      )}
 
       {movieReviews.length > 0 && (
         <ReviewsList>

@@ -10,10 +10,10 @@ const CastComp = ({ movieCast }) => {
   return (
     <>
       {movieCast.length === 0 && (
-        <p>
-          We are sorry, but we don`t have information about the cast of this
+        <ItalicText>
+          We are sorry, but we don`t have any information about the cast of this
           movie
-        </p>
+        </ItalicText>
       )}
 
       {movieCast.length > 0 && (

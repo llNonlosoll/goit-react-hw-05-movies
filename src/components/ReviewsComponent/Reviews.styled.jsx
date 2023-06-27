@@ -43,3 +43,7 @@ export const ReviewsItem = styled.li`
 export const ReviewsText = styled.p`
   text-align: justify;
 `;
+
+export const ItalicText = styled.p`
+  font-style: italic;
+`;
