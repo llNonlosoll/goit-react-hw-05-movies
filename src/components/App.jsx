@@ -1,5 +1,5 @@
 import { lazy } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 
 import { Layout } from './LayoutComponent/Layout';
 
@@ -22,7 +22,7 @@ export const App = () => {
           <Route path="reviews" element={<Review />} />
         </Route>
 
-        <Route path="*" element={<Home />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
   );
